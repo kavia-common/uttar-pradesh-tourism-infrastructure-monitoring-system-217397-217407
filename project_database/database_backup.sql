@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict jpHhRhPcYcpmYMBwpoqJFI9MoVZ4PMtxpbVAzxmrN3yjIzfYpwd6U99TbajG2KD
+\restrict hDTrH18iQ0uvKcfeF1fLFIvyeHyk6keP5Mxww4SKgCF0yRLRgo6q3ebP1XCodaI
 
 -- Dumped from database version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
@@ -28,9 +28,9 @@ CREATE DATABASE myapp WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDE
 
 ALTER DATABASE myapp OWNER TO postgres;
 
-\unrestrict jpHhRhPcYcpmYMBwpoqJFI9MoVZ4PMtxpbVAzxmrN3yjIzfYpwd6U99TbajG2KD
+\unrestrict hDTrH18iQ0uvKcfeF1fLFIvyeHyk6keP5Mxww4SKgCF0yRLRgo6q3ebP1XCodaI
 \connect myapp
-\restrict jpHhRhPcYcpmYMBwpoqJFI9MoVZ4PMtxpbVAzxmrN3yjIzfYpwd6U99TbajG2KD
+\restrict hDTrH18iQ0uvKcfeF1fLFIvyeHyk6keP5Mxww4SKgCF0yRLRgo6q3ebP1XCodaI
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1268,6 +1268,7 @@ COPY public.documents (id, project_id, entity_type, entity_id, file_name, file_u
 1	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:03:21.225399+00	Project brief document
 2	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:04:15.410257+00	Project brief document
 3	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:07:08.240271+00	Project brief document
+4	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:11:17.654573+00	Project brief document
 \.
 
 
@@ -1279,6 +1280,7 @@ COPY public.funds (id, project_id, fund_source, sanctioned_amount, release_date,
 1	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:03:21.221892+00
 2	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:04:15.408442+00
 3	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:07:08.238504+00
+4	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:11:17.652747+00
 \.
 
 
@@ -1290,6 +1292,7 @@ COPY public.handovers (id, project_id, handover_date, status, remarks, document_
 1	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:03:21.220475+00
 2	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:04:15.407139+00
 3	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:07:08.237177+00
+4	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:11:17.651477+00
 \.
 
 
@@ -1304,6 +1307,10 @@ COPY public.inspections (id, project_id, site_id, inspection_date, inspector_id,
 4	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:07:08.235407+00
 5	1	2	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:07:08.235407+00
 6	1	3	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:07:08.235407+00
+7	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:11:17.649572+00
+8	1	2	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:11:17.649572+00
+9	1	3	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:11:17.649572+00
+10	1	4	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:11:17.649572+00
 \.
 
 
@@ -1317,6 +1324,7 @@ COPY public.locations (id, name, parent_id, level, code, created_at) FROM stdin;
 3	Varanasi	1	DISTRICT	VNS	2025-11-05 09:03:21.20343+00
 4	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:04:15.393067+00
 5	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:07:08.223069+00
+6	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:11:17.637119+00
 \.
 
 
@@ -1337,6 +1345,14 @@ COPY public.milestone_updates (id, milestone_id, update_date, status, progress_p
 10	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:07:08.233876+00
 11	4	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:07:08.233876+00
 12	6	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:07:08.233876+00
+13	2	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:11:17.646003+00
+14	4	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:11:17.646003+00
+15	6	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:11:17.646003+00
+16	8	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:11:17.646003+00
+17	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:11:17.648169+00
+18	4	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:11:17.648169+00
+19	6	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:11:17.648169+00
+20	8	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:11:17.648169+00
 \.
 
 
@@ -1351,6 +1367,8 @@ COPY public.milestones (id, project_id, name, description, planned_start, planne
 4	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:04:15.401251+00
 5	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 09:07:08.229585+00
 6	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:07:08.230906+00
+7	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 09:11:17.643453+00
+8	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:11:17.644769+00
 \.
 
 
@@ -1410,6 +1428,7 @@ COPY public.sites (id, project_id, name, description, address, location_id, lati
 1	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:03:21.206669+00	2025-11-05 09:03:21.206669+00
 2	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:04:15.395469+00	2025-11-05 09:04:15.395469+00
 3	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:07:08.225338+00	2025-11-05 09:07:08.225338+00
+4	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:11:17.639226+00	2025-11-05 09:11:17.639226+00
 \.
 
 
@@ -1451,7 +1470,7 @@ SELECT pg_catalog.setval('public.audit_log_id_seq', 1, false);
 -- Name: contractors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.contractors_id_seq', 3, true);
+SELECT pg_catalog.setval('public.contractors_id_seq', 4, true);
 
 
 --
@@ -1465,49 +1484,49 @@ SELECT pg_catalog.setval('public.contracts_id_seq', 1, true);
 -- Name: documents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.documents_id_seq', 3, true);
+SELECT pg_catalog.setval('public.documents_id_seq', 4, true);
 
 
 --
 -- Name: funds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.funds_id_seq', 3, true);
+SELECT pg_catalog.setval('public.funds_id_seq', 4, true);
 
 
 --
 -- Name: handovers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.handovers_id_seq', 3, true);
+SELECT pg_catalog.setval('public.handovers_id_seq', 4, true);
 
 
 --
 -- Name: inspections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.inspections_id_seq', 6, true);
+SELECT pg_catalog.setval('public.inspections_id_seq', 10, true);
 
 
 --
 -- Name: locations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.locations_id_seq', 5, true);
+SELECT pg_catalog.setval('public.locations_id_seq', 6, true);
 
 
 --
 -- Name: milestone_updates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.milestone_updates_id_seq', 12, true);
+SELECT pg_catalog.setval('public.milestone_updates_id_seq', 20, true);
 
 
 --
 -- Name: milestones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.milestones_id_seq', 6, true);
+SELECT pg_catalog.setval('public.milestones_id_seq', 8, true);
 
 
 --
@@ -1521,7 +1540,7 @@ SELECT pg_catalog.setval('public.notifications_id_seq', 1, true);
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.payments_id_seq', 3, true);
+SELECT pg_catalog.setval('public.payments_id_seq', 4, true);
 
 
 --
@@ -1535,28 +1554,28 @@ SELECT pg_catalog.setval('public.projects_id_seq', 1, true);
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 15, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 20, true);
 
 
 --
 -- Name: sites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sites_id_seq', 3, true);
+SELECT pg_catalog.setval('public.sites_id_seq', 4, true);
 
 
 --
 -- Name: tenders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tenders_id_seq', 3, true);
+SELECT pg_catalog.setval('public.tenders_id_seq', 4, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+SELECT pg_catalog.setval('public.users_id_seq', 4, true);
 
 
 --
@@ -2947,5 +2966,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES 
 -- PostgreSQL database dump complete
 --
 
-\unrestrict jpHhRhPcYcpmYMBwpoqJFI9MoVZ4PMtxpbVAzxmrN3yjIzfYpwd6U99TbajG2KD
+\unrestrict hDTrH18iQ0uvKcfeF1fLFIvyeHyk6keP5Mxww4SKgCF0yRLRgo6q3ebP1XCodaI
 
