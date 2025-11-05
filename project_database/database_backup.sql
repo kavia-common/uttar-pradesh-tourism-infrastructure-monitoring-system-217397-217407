@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MOcjaQ0eceHcbeSK1vZRmEedNXClqSsADWFPsbJ0aumLdl8IyqLz3c5k5EsEBlE
+\restrict aaK5i5kYI7u8ilsb9kMvkPljeaKauyFykWfqfbFd4Z9bsuXNl91yv9WWvUx3dZc
 
 -- Dumped from database version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
@@ -28,9 +28,9 @@ CREATE DATABASE myapp WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDE
 
 ALTER DATABASE myapp OWNER TO postgres;
 
-\unrestrict MOcjaQ0eceHcbeSK1vZRmEedNXClqSsADWFPsbJ0aumLdl8IyqLz3c5k5EsEBlE
+\unrestrict aaK5i5kYI7u8ilsb9kMvkPljeaKauyFykWfqfbFd4Z9bsuXNl91yv9WWvUx3dZc
 \connect myapp
-\restrict MOcjaQ0eceHcbeSK1vZRmEedNXClqSsADWFPsbJ0aumLdl8IyqLz3c5k5EsEBlE
+\restrict aaK5i5kYI7u8ilsb9kMvkPljeaKauyFykWfqfbFd4Z9bsuXNl91yv9WWvUx3dZc
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1247,7 +1247,7 @@ COPY public.audit_log (id, user_id, action, entity, entity_id, description, ip_a
 --
 
 COPY public.contractors (id, name, registration_no, contact_person, email, phone, address, rating, created_at) FROM stdin;
-1	ABC Constructions Pvt Ltd	REG-ABC-001	Mr. Sharma	contact@abcconstructions.com	+911234567890	Gomti Nagar, Lucknow	4.50	2025-11-05 09:32:37.684425+00
+1	ABC Constructions Pvt Ltd	REG-ABC-001	Mr. Sharma	contact@abcconstructions.com	+911234567890	Gomti Nagar, Lucknow	4.50	2025-11-05 10:49:54.130198+00
 \.
 
 
@@ -1256,7 +1256,7 @@ COPY public.contractors (id, name, registration_no, contact_person, email, phone
 --
 
 COPY public.contracts (id, tender_id, contractor_id, contract_no, title, start_date, end_date, value, status, created_at) FROM stdin;
-1	1	1	CN-001	Construction Contract	2025-10-06	2026-04-04	18000000.00	ACTIVE	2025-11-05 09:32:37.685633+00
+1	1	1	CN-001	Construction Contract	2025-10-06	2026-04-04	18000000.00	ACTIVE	2025-11-05 10:49:54.131575+00
 \.
 
 
@@ -1265,7 +1265,7 @@ COPY public.contracts (id, tender_id, contractor_id, contract_no, title, start_d
 --
 
 COPY public.documents (id, project_id, entity_type, entity_id, file_name, file_url, uploaded_by, uploaded_at, description) FROM stdin;
-1	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:32:37.699664+00	Project brief document
+1	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 10:49:54.149286+00	Project brief document
 \.
 
 
@@ -1274,7 +1274,7 @@ COPY public.documents (id, project_id, entity_type, entity_id, file_name, file_u
 --
 
 COPY public.funds (id, project_id, fund_source, sanctioned_amount, release_date, remarks, created_at) FROM stdin;
-1	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:32:37.696201+00
+1	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 10:49:54.145036+00
 \.
 
 
@@ -1283,7 +1283,7 @@ COPY public.funds (id, project_id, fund_source, sanctioned_amount, release_date,
 --
 
 COPY public.handovers (id, project_id, handover_date, status, remarks, document_url, created_at) FROM stdin;
-1	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:32:37.694821+00
+1	1	\N	PENDING	Pending final completion	\N	2025-11-05 10:49:54.143259+00
 \.
 
 
@@ -1292,7 +1292,7 @@ COPY public.handovers (id, project_id, handover_date, status, remarks, document_
 --
 
 COPY public.inspections (id, project_id, site_id, inspection_date, inspector_id, outcome, remarks, created_at) FROM stdin;
-1	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:32:37.693123+00
+1	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 10:49:54.140815+00
 \.
 
 
@@ -1301,9 +1301,9 @@ COPY public.inspections (id, project_id, site_id, inspection_date, inspector_id,
 --
 
 COPY public.locations (id, name, parent_id, level, code, created_at) FROM stdin;
-1	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:32:37.675818+00
-2	Lucknow	1	DISTRICT	LKO	2025-11-05 09:32:37.677006+00
-3	Varanasi	1	DISTRICT	VNS	2025-11-05 09:32:37.678205+00
+1	Uttar Pradesh	\N	STATE	UP	2025-11-05 10:49:54.119774+00
+2	Lucknow	1	DISTRICT	LKO	2025-11-05 10:49:54.121024+00
+3	Varanasi	1	DISTRICT	VNS	2025-11-05 10:49:54.122515+00
 \.
 
 
@@ -1312,8 +1312,8 @@ COPY public.locations (id, name, parent_id, level, code, created_at) FROM stdin;
 --
 
 COPY public.milestone_updates (id, milestone_id, update_date, status, progress_percent, remarks, latitude, longitude, photo_url, created_by, created_at) FROM stdin;
-1	2	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:32:37.690041+00
-2	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:32:37.691813+00
+1	2	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 10:49:54.13654+00
+2	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 10:49:54.139186+00
 \.
 
 
@@ -1322,8 +1322,8 @@ COPY public.milestone_updates (id, milestone_id, update_date, status, progress_p
 --
 
 COPY public.milestones (id, project_id, name, description, planned_start, planned_end, amount, sequence_no, status, created_at) FROM stdin;
-1	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 09:32:37.687517+00
-2	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:32:37.688902+00
+1	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 10:49:54.133692+00
+2	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 10:49:54.135308+00
 \.
 
 
@@ -1332,7 +1332,7 @@ COPY public.milestones (id, project_id, name, description, planned_start, planne
 --
 
 COPY public.notifications (id, user_id, type, title, message, is_read, created_at) FROM stdin;
-1	1	INFO	Setup Complete	Database initialized with seed data.	f	2025-11-05 09:32:37.701259+00
+1	1	INFO	Setup Complete	Database initialized with seed data.	f	2025-11-05 10:49:54.151228+00
 \.
 
 
@@ -1341,7 +1341,7 @@ COPY public.notifications (id, user_id, type, title, message, is_read, created_a
 --
 
 COPY public.payments (id, project_id, contract_id, milestone_id, amount, payment_date, status, reference_no, created_at) FROM stdin;
-1	1	1	1	4500000.00	2025-10-31	PAID	PAY-001	2025-11-05 09:32:37.697762+00
+1	1	1	1	4500000.00	2025-10-31	PAID	PAY-001	2025-11-05 10:49:54.147017+00
 \.
 
 
@@ -1350,7 +1350,7 @@ COPY public.payments (id, project_id, contract_id, milestone_id, amount, payment
 --
 
 COPY public.projects (id, project_code, name, description, department, start_date, end_date, status, estimated_cost, approved_budget, location_id, latitude, longitude, created_by, created_at, updated_at) FROM stdin;
-1	PRJ-001	Tourist Information Center - Lucknow	Setup of modern Tourist Information Center with amenities.	UPSTDC	2025-09-06	2026-03-05	ONGOING	25000000.00	22000000.00	2	26.846700	80.946200	1	2025-11-05 09:32:37.679324+00	2025-11-05 09:32:37.679324+00
+1	PRJ-001	Tourist Information Center - Lucknow	Setup of modern Tourist Information Center with amenities.	UPSTDC	2025-09-06	2026-03-05	ONGOING	25000000.00	22000000.00	2	26.846700	80.946200	1	2025-11-05 10:49:54.124174+00	2025-11-05 10:49:54.124174+00
 \.
 
 
@@ -1367,11 +1367,11 @@ COPY public.refresh_tokens (id, user_id, token, expires_at, created_at, revoked,
 --
 
 COPY public.roles (id, name, description, created_at) FROM stdin;
-1	ADMIN	System administrator with full access	2025-11-05 09:32:37.670607+00
-2	DEO	Data Entry Operator	2025-11-05 09:32:37.670607+00
-3	ENGINEER	Project Engineer	2025-11-05 09:32:37.670607+00
-4	AUDITOR	Auditor for compliance and QA	2025-11-05 09:32:37.670607+00
-5	VIEWER	Read-only access	2025-11-05 09:32:37.670607+00
+1	ADMIN	System administrator with full access	2025-11-05 10:49:54.113868+00
+2	DEO	Data Entry Operator	2025-11-05 10:49:54.113868+00
+3	ENGINEER	Project Engineer	2025-11-05 10:49:54.113868+00
+4	AUDITOR	Auditor for compliance and QA	2025-11-05 10:49:54.113868+00
+5	VIEWER	Read-only access	2025-11-05 10:49:54.113868+00
 \.
 
 
@@ -1380,7 +1380,7 @@ COPY public.roles (id, name, description, created_at) FROM stdin;
 --
 
 COPY public.sites (id, project_id, name, description, address, location_id, latitude, longitude, created_at, updated_at) FROM stdin;
-1	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:32:37.681283+00	2025-11-05 09:32:37.681283+00
+1	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 10:49:54.12647+00	2025-11-05 10:49:54.12647+00
 \.
 
 
@@ -1389,7 +1389,7 @@ COPY public.sites (id, project_id, name, description, address, location_id, lati
 --
 
 COPY public.tenders (id, project_id, tender_no, title, description, publish_date, close_date, status, created_at) FROM stdin;
-1	1	TN-001	Construction Tender	Construction and interiors	2025-09-21	2025-10-21	AWARDED	2025-11-05 09:32:37.682953+00
+1	1	TN-001	Construction Tender	Construction and interiors	2025-09-21	2025-10-21	AWARDED	2025-11-05 10:49:54.128274+00
 \.
 
 
@@ -1398,7 +1398,7 @@ COPY public.tenders (id, project_id, tender_no, title, description, publish_date
 --
 
 COPY public.user_roles (user_id, role_id, assigned_at, assigned_by) FROM stdin;
-1	1	2025-11-05 09:32:37.67243+00	\N
+1	1	2025-11-05 10:49:54.11617+00	\N
 \.
 
 
@@ -1407,7 +1407,7 @@ COPY public.user_roles (user_id, role_id, assigned_at, assigned_by) FROM stdin;
 --
 
 COPY public.users (id, username, email, password_hash, full_name, phone, status, last_login_at, created_at, updated_at) FROM stdin;
-1	admin	admin@uptourism.local	$2b$10$0s7pJc.7uYv4yS9c9wC1MeoJmXkXh3w0GzJdNf4b0jBqLq9Wzqgwy	System Administrator	+910000000000	ACTIVE	\N	2025-11-05 09:32:37.67243+00	2025-11-05 09:32:37.67243+00
+1	admin	admin@uptourism.local	$2b$10$0s7pJc.7uYv4yS9c9wC1MeoJmXkXh3w0GzJdNf4b0jBqLq9Wzqgwy	System Administrator	+910000000000	ACTIVE	\N	2025-11-05 10:49:54.11617+00	2025-11-05 10:49:54.11617+00
 \.
 
 
@@ -2918,5 +2918,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES 
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MOcjaQ0eceHcbeSK1vZRmEedNXClqSsADWFPsbJ0aumLdl8IyqLz3c5k5EsEBlE
+\unrestrict aaK5i5kYI7u8ilsb9kMvkPljeaKauyFykWfqfbFd4Z9bsuXNl91yv9WWvUx3dZc
 
