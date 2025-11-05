@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict zqtgL7D0rr1j01DWbyY6xlgdWqBoyhcxEFy7vElpWsD95au69xncXMvb7ncSgtm
+\restrict dxkCrlhV4jLgAbm3Ge9kwy9m3BRxdZqCUUuJdhtAl0Rax4zAetnwoNo95hpJWaU
 
 -- Dumped from database version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.10 (Ubuntu 16.10-0ubuntu0.24.04.1)
@@ -28,9 +28,9 @@ CREATE DATABASE myapp WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDE
 
 ALTER DATABASE myapp OWNER TO postgres;
 
-\unrestrict zqtgL7D0rr1j01DWbyY6xlgdWqBoyhcxEFy7vElpWsD95au69xncXMvb7ncSgtm
+\unrestrict dxkCrlhV4jLgAbm3Ge9kwy9m3BRxdZqCUUuJdhtAl0Rax4zAetnwoNo95hpJWaU
 \connect myapp
-\restrict zqtgL7D0rr1j01DWbyY6xlgdWqBoyhcxEFy7vElpWsD95au69xncXMvb7ncSgtm
+\restrict dxkCrlhV4jLgAbm3Ge9kwy9m3BRxdZqCUUuJdhtAl0Rax4zAetnwoNo95hpJWaU
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1266,6 +1266,7 @@ COPY public.contracts (id, tender_id, contractor_id, contract_no, title, start_d
 
 COPY public.documents (id, project_id, entity_type, entity_id, file_name, file_url, uploaded_by, uploaded_at, description) FROM stdin;
 1	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:03:21.225399+00	Project brief document
+2	1	PROJECT	1	project_brief.pdf	/uploads/project_brief.pdf	1	2025-11-05 09:04:15.410257+00	Project brief document
 \.
 
 
@@ -1275,6 +1276,7 @@ COPY public.documents (id, project_id, entity_type, entity_id, file_name, file_u
 
 COPY public.funds (id, project_id, fund_source, sanctioned_amount, release_date, remarks, created_at) FROM stdin;
 1	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:03:21.221892+00
+2	1	State Budget	22000000.00	2025-09-16	Initial sanction	2025-11-05 09:04:15.408442+00
 \.
 
 
@@ -1284,6 +1286,7 @@ COPY public.funds (id, project_id, fund_source, sanctioned_amount, release_date,
 
 COPY public.handovers (id, project_id, handover_date, status, remarks, document_url, created_at) FROM stdin;
 1	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:03:21.220475+00
+2	1	\N	PENDING	Pending final completion	\N	2025-11-05 09:04:15.407139+00
 \.
 
 
@@ -1293,6 +1296,8 @@ COPY public.handovers (id, project_id, handover_date, status, remarks, document_
 
 COPY public.inspections (id, project_id, site_id, inspection_date, inspector_id, outcome, remarks, created_at) FROM stdin;
 1	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:03:21.218704+00
+2	1	1	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:04:15.405503+00
+3	1	2	2025-11-02	1	PASS	Quality acceptable	2025-11-05 09:04:15.405503+00
 \.
 
 
@@ -1304,6 +1309,7 @@ COPY public.locations (id, name, parent_id, level, code, created_at) FROM stdin;
 1	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:03:21.200928+00
 2	Lucknow	1	DISTRICT	LKO	2025-11-05 09:03:21.202139+00
 3	Varanasi	1	DISTRICT	VNS	2025-11-05 09:03:21.20343+00
+4	Uttar Pradesh	\N	STATE	UP	2025-11-05 09:04:15.393067+00
 \.
 
 
@@ -1314,6 +1320,10 @@ COPY public.locations (id, name, parent_id, level, code, created_at) FROM stdin;
 COPY public.milestone_updates (id, milestone_id, update_date, status, progress_percent, remarks, latitude, longitude, photo_url, created_by, created_at) FROM stdin;
 1	2	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:03:21.215575+00
 2	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:03:21.217379+00
+3	2	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:04:15.402413+00
+4	4	2025-10-28	IN_PROGRESS	50.00	Work at 50%	26.852100	80.949200	/uploads/m1_1.jpg	1	2025-11-05 09:04:15.402413+00
+5	2	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:04:15.404123+00
+6	4	2025-11-03	IN_PROGRESS	65.00	Work at 65%	26.852200	80.949300	/uploads/m1_2.jpg	1	2025-11-05 09:04:15.404123+00
 \.
 
 
@@ -1324,6 +1334,8 @@ COPY public.milestone_updates (id, milestone_id, update_date, status, progress_p
 COPY public.milestones (id, project_id, name, description, planned_start, planned_end, amount, sequence_no, status, created_at) FROM stdin;
 1	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 09:03:21.212835+00
 2	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:03:21.214375+00
+3	1	Foundation	Excavation and foundation	2025-10-06	2025-10-26	5000000.00	1	COMPLETED	2025-11-05 09:04:15.39993+00
+4	1	Superstructure	Structural works	2025-10-26	2025-12-05	7000000.00	2	IN_PROGRESS	2025-11-05 09:04:15.401251+00
 \.
 
 
@@ -1381,6 +1393,7 @@ COPY public.roles (id, name, description, created_at) FROM stdin;
 
 COPY public.sites (id, project_id, name, description, address, location_id, latitude, longitude, created_at, updated_at) FROM stdin;
 1	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:03:21.206669+00	2025-11-05 09:03:21.206669+00
+2	1	Primary Site	Main TIC building	Hazratganj, Lucknow	2	26.852000	80.949000	2025-11-05 09:04:15.395469+00	2025-11-05 09:04:15.395469+00
 \.
 
 
@@ -1422,7 +1435,7 @@ SELECT pg_catalog.setval('public.audit_log_id_seq', 1, false);
 -- Name: contractors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.contractors_id_seq', 1, true);
+SELECT pg_catalog.setval('public.contractors_id_seq', 2, true);
 
 
 --
@@ -1436,49 +1449,49 @@ SELECT pg_catalog.setval('public.contracts_id_seq', 1, true);
 -- Name: documents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.documents_id_seq', 1, true);
+SELECT pg_catalog.setval('public.documents_id_seq', 2, true);
 
 
 --
 -- Name: funds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.funds_id_seq', 1, true);
+SELECT pg_catalog.setval('public.funds_id_seq', 2, true);
 
 
 --
 -- Name: handovers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.handovers_id_seq', 1, true);
+SELECT pg_catalog.setval('public.handovers_id_seq', 2, true);
 
 
 --
 -- Name: inspections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.inspections_id_seq', 1, true);
+SELECT pg_catalog.setval('public.inspections_id_seq', 3, true);
 
 
 --
 -- Name: locations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.locations_id_seq', 3, true);
+SELECT pg_catalog.setval('public.locations_id_seq', 4, true);
 
 
 --
 -- Name: milestone_updates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.milestone_updates_id_seq', 2, true);
+SELECT pg_catalog.setval('public.milestone_updates_id_seq', 6, true);
 
 
 --
 -- Name: milestones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.milestones_id_seq', 2, true);
+SELECT pg_catalog.setval('public.milestones_id_seq', 4, true);
 
 
 --
@@ -1492,7 +1505,7 @@ SELECT pg_catalog.setval('public.notifications_id_seq', 1, true);
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.payments_id_seq', 1, true);
+SELECT pg_catalog.setval('public.payments_id_seq', 2, true);
 
 
 --
@@ -1506,28 +1519,28 @@ SELECT pg_catalog.setval('public.projects_id_seq', 1, true);
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 5, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 10, true);
 
 
 --
 -- Name: sites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sites_id_seq', 1, true);
+SELECT pg_catalog.setval('public.sites_id_seq', 2, true);
 
 
 --
 -- Name: tenders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tenders_id_seq', 1, true);
+SELECT pg_catalog.setval('public.tenders_id_seq', 2, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --
@@ -2918,5 +2931,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES 
 -- PostgreSQL database dump complete
 --
 
-\unrestrict zqtgL7D0rr1j01DWbyY6xlgdWqBoyhcxEFy7vElpWsD95au69xncXMvb7ncSgtm
+\unrestrict dxkCrlhV4jLgAbm3Ge9kwy9m3BRxdZqCUUuJdhtAl0Rax4zAetnwoNo95hpJWaU
 
