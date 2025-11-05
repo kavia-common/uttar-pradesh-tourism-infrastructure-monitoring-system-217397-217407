@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Minimal PostgreSQL startup script with full paths
+# Minimal PostgreSQL startup script with schema bootstrapping
 DB_NAME="myapp"
 DB_USER="appuser"
 DB_PASSWORD="dbuser123"
 DB_PORT="5000"
+
+SCHEMA_FILES=("schema/01_init.sql" "schema/02_constraints.sql" "schema/03_seed.sql" "schema/04_views.sql")
 
 echo "Starting PostgreSQL setup..."
 
@@ -13,6 +15,24 @@ PG_VERSION=$(ls /usr/lib/postgresql/ | head -1)
 PG_BIN="/usr/lib/postgresql/${PG_VERSION}/bin"
 
 echo "Found PostgreSQL version: ${PG_VERSION}"
+
+apply_schema() {
+  local applied_any=false
+  for f in "${SCHEMA_FILES[@]}"; do
+    if [ -f "$f" ]; then
+      echo "Running $f ..."
+      sudo -u postgres ${PG_BIN}/psql -p ${DB_PORT} -d ${DB_NAME} -f "$f" >/dev/null
+      applied_any=true
+    else
+      echo "Skipping missing $f"
+    fi
+  done
+  if [ "$applied_any" = true ]; then
+    echo "✓ Schema and seed applied."
+  else
+    echo "⚠ No schema files found to apply."
+  fi
+}
 
 # Check if PostgreSQL is already running on the specified port
 if sudo -u postgres ${PG_BIN}/pg_isready -p ${DB_PORT} > /dev/null 2>&1; then
@@ -28,6 +48,12 @@ if sudo -u postgres ${PG_BIN}/pg_isready -p ${DB_PORT} > /dev/null 2>&1; then
     if [ -f "db_connection.txt" ]; then
         echo "Or use: $(cat db_connection.txt)"
     fi
+
+    # Attempt to apply schema if DB is accessible
+    if sudo -u postgres ${PG_BIN}/psql -p ${DB_PORT} -d ${DB_NAME} -c '\q' 2>/dev/null; then
+        echo "Applying schema and seed (server already running)..."
+        apply_schema
+    fi
     
     echo ""
     echo "Script stopped - server already running."
@@ -42,6 +68,8 @@ if pgrep -f "postgres.*-p ${DB_PORT}" > /dev/null 2>&1; then
     # Try to connect and verify the database exists
     if sudo -u postgres ${PG_BIN}/psql -p ${DB_PORT} -d ${DB_NAME} -c '\q' 2>/dev/null; then
         echo "Database ${DB_NAME} is accessible."
+        echo "Applying schema and seed..."
+        apply_schema
         echo "Script stopped - server already running."
         exit 0
     fi
@@ -91,7 +119,7 @@ END
 GRANT ALL PRIVILEGES ON DATABASE ${DB_NAME} TO ${DB_USER};
 
 -- Connect to the specific database for schema-level permissions
-\c ${DB_NAME}
+\\c ${DB_NAME}
 
 -- For PostgreSQL 15+, we need to handle public schema permissions differently
 -- First, grant usage on public schema
@@ -105,10 +133,6 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ${DB_USER};
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ${DB_USER};
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO ${DB_USER};
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TYPES TO ${DB_USER};
-
--- If you want the user to be able to create objects without restrictions,
--- you can make them the owner of the public schema (optional but effective)
--- ALTER SCHEMA public OWNER TO ${DB_USER};
 
 -- Alternative: Grant all privileges on schema public to the user
 GRANT ALL ON SCHEMA public TO ${DB_USER};
@@ -126,8 +150,12 @@ GRANT ALL ON SCHEMA public TO ${DB_USER};
 GRANT CREATE ON SCHEMA public TO ${DB_USER};
 
 -- Show current permissions for debugging
-\dn+ public
+\\dn+ public
 EOF
+
+# Apply schema and seed after fresh start
+echo "Applying schema and seed SQL files..."
+apply_schema
 
 # Save connection command to a file
 echo "psql postgresql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}" > db_connection.txt
